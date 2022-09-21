@@ -39,7 +39,7 @@ namespace MinuOmaVorm_project
 
         private void Nupp_Click(object sender, EventArgs e)
         {
-            List<string> songs = "rickroll.wav","";
+            string[] songs = { "rickroll.wav","this_fire.wav","love." };
             Button nupp_sender = (Button)sender;
             var vastus = MessageBox.Show("Kas tahad muusikat kuulata", "Küsimus", MessageBoxButtons.YesNo);
 
