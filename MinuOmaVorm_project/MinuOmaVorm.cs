@@ -19,28 +19,32 @@ namespace MinuOmaVorm_project
         RadioButton rnupp1, rnupp2, rnupp3, rnupp4;
         PictureBox pilt;
         ProgressBar riba;
+        TextBox tekst;
         public MinuOmaVorm()
         {
             Height = 600;                                               //ширина
             Width = 900;                                                //высота
             Text = "Minu oma vorm koos elementidega";                   //название формы??
-            puu = new TreeView();                                           
-            puu.Dock = DockStyle.Left;
-            puu.Location = new Point(0, 0);
-            TreeNode oksad = new TreeNode("Elemendid");
-            oksad.Nodes.Add(new TreeNode("Nupp-Button"));
-            oksad.Nodes.Add(new TreeNode("Silt-Label"));
-            oksad.Nodes.Add(new TreeNode("Dialog aken-Message box"));
-            oksad.Nodes.Add(new TreeNode("Märkeruut-Checkbox"));
-            oksad.Nodes.Add(new TreeNode("Radionupp-Radiobutton"));
-            oksad.Nodes.Add(new TreeNode("Edenemisriba-Progressbar"));
+            puu = new TreeView();                                       //новое "дерево?" с наименованием "puu"
+            puu.Dock = DockStyle.Left;                                  //расположение "дерева" по левую сторону
+            puu.Location = new Point(0, 0);                             //координаты нахождения древа
+            TreeNode oksad = new TreeNode("Elemendid");                 //ветки дерева(вкладки)
+            oksad.Nodes.Add(new TreeNode("Nupp-Button"));               //ветка кнопки
+            oksad.Nodes.Add(new TreeNode("Silt-Label"));                //ветка заголовка
+            oksad.Nodes.Add(new TreeNode("Dialog aken-Message box"));   //ветка диалогового окна
+            oksad.Nodes.Add(new TreeNode("Märkeruut-Checkbox"));        //ветка чекбоксов
+            oksad.Nodes.Add(new TreeNode("Radionupp-Radiobutton"));     //ветка радиокнопок
+            oksad.Nodes.Add(new TreeNode("Edenemisriba-Progressbar"));  //ветка шкалы загрузки
+            oksad.Nodes.Add(new TreeNode("Tekstkast-TextBox"));
+            oksad.Nodes.Add(new TreeNode("OmaVorm"));
 
-            puu.AfterSelect += Puu_AfterSelect;
-            puu.Nodes.Add(oksad);
-            this.Controls.Add(puu);
+
+            puu.AfterSelect += Puu_AfterSelect;                         //строчка для использования функции "Puu_AfterSelect"
+            puu.Nodes.Add(oksad);                                       //добавляем в "узлы" древа наши ветки
+            this.Controls.Add(puu);                                     //добовляем на контрольную панел древо
         }
 
-        private void Puu_AfterSelect(object sender, TreeViewEventArgs e)
+        private void Puu_AfterSelect(object sender, TreeViewEventArgs e)//
         {
             
 
@@ -174,6 +178,34 @@ namespace MinuOmaVorm_project
                 };
                 this.Controls.Add(riba);
             }
+            else if (e.Node.Text == "Tekstkast-TextBox")
+            {
+                tekst = new TextBox
+                {
+                    Font = new Font("Raleway", 34, FontStyle.Bold),
+                    Location = new Point(350, 400),
+                    Enabled = false
+                };
+                MouseDoubleClick += Tekst_MouseDoubleClick;
+                this.Controls.Add(tekst);
+            }
+            else if (e.Node.Text == "OmaVorm")
+            {
+                OmaVorm oma = new OmaVorm("Kuulame muusikat", "Vajuta siia", "Faili nimi");
+                oma.ShowDialog();
+            }
+        }
+
+        private void Tekst_MouseDoubleClick(object sender, EventArgs e)
+        {
+            if (tekst.Enabled)
+            {
+                tekst.Enabled = false;
+            }
+            else
+            {
+                tekst.Enabled=true;
+            }
         }
 
         private void Rnuppud_Changed(object sender, EventArgs e)
@@ -259,6 +291,9 @@ namespace MinuOmaVorm_project
 
 
 //------------------------------------------Подвал приколов---------------------------------------------------------------------------
+//А что вы тут ожидали увидеть? 
+//ну раз уж вы до сюда дошли то вот вам анекдот как эстонский баран просит попить??? "Veeeeeee" xD
+
 //InitializeComponent(); Нужно для того если работать с инструментами
 //oksad-ветки
 
