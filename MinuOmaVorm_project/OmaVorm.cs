@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace MinuOmaVorm_project
 {
-    public class OmaVorm :Form
+    public class OmaVorm : Form
     {
-        Random random = new Random();
+        Random rnd = new Random();
         public OmaVorm() { }
         public OmaVorm(string Pealkiri, string Nupp, string Fail)
         {
@@ -27,11 +27,11 @@ namespace MinuOmaVorm_project
             nupp.Click += Nupp_Click;
             Label failinimi = new Label
             {
-                Location = new System.Drawing.Point(50,0),
+                Location = new System.Drawing.Point(50, 0),
                 Text = Fail,
-                Size = new System.Drawing.Size(100,50),
+                Size = new System.Drawing.Size(100, 50),
                 BackColor = System.Drawing.Color.LightSkyBlue
-                
+
             };
             this.Controls.Add(nupp);
             this.Controls.Add(failinimi);
@@ -39,16 +39,15 @@ namespace MinuOmaVorm_project
 
         private void Nupp_Click(object sender, EventArgs e)
         {
-            string[] songs = { "rickroll.wav","this_fire.wav","love." };
+            string[] Songs = { @"..\..\rickroll.wav", @"..\..\this_fire.wav", @"..\..\love.wav" };
             Button nupp_sender = (Button)sender;
-            var vastus = MessageBox.Show("Kas tahad muusikat kuulata", "Küsimus", MessageBoxButtons.YesNo);
-
-            if (vastus==DialogResult.Yes)
+            var vastus = MessageBox.Show("Kas tahad muusika kuulata?", "Küsimus", MessageBoxButtons.YesNo);
+            if (vastus == DialogResult.Yes)
             {
-                using (var muusika = new SoundPlayer(@"..\..\rickroll.wav"))
+                using (var muusika = new SoundPlayer(Songs[rnd.Next(0, 2)]))
                 {
                     muusika.Play();
-                };
+                }
             }
             else
             {
