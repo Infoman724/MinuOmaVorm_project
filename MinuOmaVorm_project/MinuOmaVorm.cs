@@ -75,7 +75,7 @@ namespace MinuOmaVorm_project
             if (e.Node.Text == "Nupp-Button")
             {
                 nupp = new Button();
-                nupp.Text = "Vajuta siia";
+                nupp.Text = "Play button";
                 nupp.Height = 30;
                 nupp.Width = 100;
                 nupp.Location = new Point(200, 100);
@@ -191,7 +191,7 @@ namespace MinuOmaVorm_project
             }
             else if (e.Node.Text == "OmaVorm")
             {
-                OmaVorm oma = new OmaVorm("Kuulame muusikat", "Vajuta siia", "Faili nimi");
+                OmaVorm oma = new OmaVorm("Kuulame muusikat", "Play button", "Muusika mängib:");
                 oma.ShowDialog();
             }
         }
