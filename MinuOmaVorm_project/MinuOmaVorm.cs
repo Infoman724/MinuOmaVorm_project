@@ -191,7 +191,7 @@ namespace MinuOmaVorm_project
             }
             else if (e.Node.Text == "OmaVorm")
             {
-                OmaVorm oma = new OmaVorm("Kuulame muusikat", "Play button", "Muusika mängib:");
+                OmaVorm oma = new OmaVorm("Kuulame muusikat", "Play button");
                 oma.ShowDialog();
             }
         }
